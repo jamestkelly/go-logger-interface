@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jamestkelly/go-logger-interface">
-    <img src="./logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Go Logger Interface</h3>
@@ -63,9 +63,7 @@ This project was made to address the need for myself in having a colourful, stan
 
 In short, this module is a wrapper on top of the standard library `Log` to output formatted logs to the terminal for a given service in the following format:
 
-```sh
-[2023-11-26 16:07:19] INFO [ExampleLoggerInterfaceName] - Hello world!
-```
+![Example output](images/example-output.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -103,41 +101,45 @@ To utilise the package after installing the module, simply create a logger inter
 ```go
 // example.go
 import (
-    blah
-
     github.com/jamestkelly/go-logger-interface
 )
 
 var (
-    example = logger.LoggerInterface{Prefix: "ExampleLoggerInterface"}
+    exampleLogger = logger.LoggerInterface{Prefix: "ExampleLoggerInterface"}
 )
 
-func exampleFunction() {
-    example.LogMessage(
-        "Hello world!",
-        "DEBUG"
-    )
+// main
+// Example main function to log a bunch of statements using LoggerInterface
+func main() {
+	exampleLogger.LogMessage(
+		"This is a 'DEBUG' message.",
+		"DEBUG",
+	)
 
-    example.LogMessage(
-        "Hello world!",
-        "INFO"
-    )
+	exampleLogger.LogMessage(
+		"This is an 'INFO' message.",
+		"INFO",
+	)
 
-    example.LogMessage(
-        "Hello world!",
-        "WARN"
-    )
+	exampleLogger.LogMessage(
+		fmt.Sprintf("This is a %s 'INFO' message.", "formatted"),
+		"INFO",
+	)
 
-    example.LogMessage(
-        "Hello world!",
-        "ERROR"
-    )
+	exampleLogger.LogMessage(
+		"This is a 'WARN' message.",
+		"WARN",
+	)
 
-    // This will cause a fatal error via the underlying call to Log.Fatalf()
-    example.LogMessage(
-        "Hello world!",
-        "FATAL"
-    )
+	exampleLogger.LogMessage(
+		"This is an 'ERROR' message.",
+		"ERROR",
+	)
+
+	exampleLogger.LogMessage(
+		"This is a 'FATAL' message.",
+		"FATAL",
+	)
 }
 ```
 
