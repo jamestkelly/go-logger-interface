@@ -13,19 +13,18 @@ import (
 // Unit test to verify that the formatSeverity method correctly formats strings with the given
 // colour.
 func TestFormatSeverity(t *testing.T) {
-	magenta = color.New(color.FgMagenta).SprintFunc()
-	cyan = color.New(color.FgCyan).SprintFunc()
-	green = color.New(color.FgGreen).SprintFunc()
-	yellow = color.New(color.FgYellow).SprintFunc()
-	red = color.New(color.FgRed).SprintFunc()
-	boldRed = color.New(color.FgHiRed).Add(color.Bold).SprintFunc()
+	magenta := color.New(color.FgMagenta).SprintFunc()
+	green := color.New(color.FgGreen).SprintFunc()
+	yellow := color.New(color.FgYellow).SprintFunc()
+	red := color.New(color.FgRed).SprintFunc()
+	boldRed := color.New(color.FgHiRed).Add(color.Bold).SprintFunc()
 
 	testStrings := []struct {
 		text     string
 		expected string
 	}{
 		{text: "DEBUG", expected: magenta("DEBUG")},
-		{text: "INFO", expected: cyan("INFO")},
+		{text: "INFO", expected: green("INFO")},
 		{text: "WARN", expected: yellow("WARN")},
 		{text: "ERROR", expected: red("ERROR")},
 		{text: "FATAL", expected: boldRed("FATAL")},
