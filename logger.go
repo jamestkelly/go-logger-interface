@@ -2,7 +2,7 @@ package logger
 
 import (
 	"fmt"
-	"log"
+	"os"
 	"time"
 
 	"github.com/fatih/color"
@@ -75,10 +75,8 @@ func (l *LoggerInterface) LogMessage(message, severity string) {
 
 	logTime := time.Now().Format("2006-01-02 15:04:05")
 
-	if severity == "FATAL" {
-		log.Fatalf(base, logTime, formatSeverity(severity), l.Prefix, cyan(message))
-		return
-	}
-
 	fmt.Printf(base, logTime, formatSeverity(severity), l.Prefix, cyan(message))
+	if severity == "FATAL" {
+		os.Exit(1)
+	}
 }
